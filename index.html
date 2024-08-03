@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport"content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"rel="stylesheet"/>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <!-- invoice page -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                  <div class="invoice2">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3><strong>Invoice</strong></h3>
+                            <form action="" id="invoice">
+                                <label for="invoice-no">Invoice Number</label>
+                                <input type="text" placeholder="Invoice no." id="invoice-no" name="invoice-no" required>
+                                <label for="Invoice-date">Invoice Date</label>
+                                <input type="date" id="Invoice-date" name="Invoice-date" required>
+                                <label for="Invoice-due">Invoice due date</label>
+                                <input type="date" id="invoice-due" name="invoice-due" required>
+                                <button type="button" id="add-invoice">Add Invoice</button>
+                            </form>
+                        </div>
+                        <div class="col-12 mt-5">
+                            <h3><strong>Client Address</strong></h3>
+                            <form action="" id="invoice">
+                                <label for="invoice-no">Client Name</label>
+                                <input type="text" id="clientname" name="clientname" required>
+                                <label for="Invoice-date">Client Address</label>
+                                <input type="text" id="address" name="address" required>
+                                <label for="Invoice-due">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                                <label for="Invoice-due">GST No</label>
+                                <input type="text" id="gst" name="gst" required>
+                                <button type="button" id="add-address">Add Address</button>
+                            </form>
+                        </div>
+                        <div class="col-12 mt-5">
+                            <h3><strong>Invoice Detail</strong></h3>
+                            <form id="invoice-form">
+                                <div class="form-group">
+                                    <label for="item">Item Name:</label>
+                                    <input type="text" id="item" name="item" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rate">GST Rate (%):</label>
+                                    <input type="number" id="rate" name="rate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="amount">Amount:</label>
+                                    <input type="number" id="amount" name="amount" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="amount">Quantity:</label>
+                                    <input type="number" id="quantity" name="quantity" required>
+                                </div>
+                                <button type="button" id="add-item">Add Item</button>
+                            </form>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-8">
+                    <div class="invoice">
+                        <div class="invoice-header">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h1>Invoice</h1>
+                                    <div class="invoice-details">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p class="text-nowrap">Invoice No.</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <p id="inv-no" class="text-nowrap text-black"></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p class="text-nowrap">Invoice Date</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <p id="inv-date" class="text-nowrap text-black"></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p class="text-nowrap">Due Date </p>
+                                            </div>
+                                            <div class="col-4">
+                                                <p id="inv-due" class="text-nowrap text-black"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 d-flex justify-content-end">
+                                    <img src="DD Logo Black.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoice-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="company-address">
+                                        <h4>Billed By</h4>
+                                        <strong>Digidzire</strong>
+                                        <p class="text-black">The Clyde House, Mall Road, Kanpur,
+                                            Kanpur Nagar,</p>
+                                        <p class="text-black">Uttar Pradesh, India - 208001</p>
+                                        <p class="text-black"><strong >GSTIN:</strong> 09ECEPS8965N1ZE</p>
+                                        <strong class="text-black">Email:</strong> <a href="mailto:info@digidzire.com">info@digidzire.com</a></p>
+                                        <strong class="text-black">Phone:</strong> +91 91204 54545</p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="client-details">
+                                        <h4>Billed To</h4>
+                                        <strong><p class="text-black" id="client-name"></p></strong>
+                                        <p class="text-black" id="client-address"></p>
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <p class="text-black"><strong class="text-black">GSTIN:</strong></p>
+                                            </div>
+                                            <div class="col-6">
+                                                <p class="ps-2 text-black" id="client-gst"></p>
+                                            </div>
+                                        </div>
+                                        <p class="text-black" id="client-phone"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mt-3">
+                                    <table id="invoice-table" class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Item</th>
+                                                <th>GST Rate</th>
+                                                <th>Quantity</th>
+                                                <th>Rate</th>
+                                                <th>Amount</th>
+                                                <th>CGST</th>
+                                                <th>SGST</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div> 
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                        <div class="company-address">
+                                            <h4>Bank Details</h4>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <strong>Account Name:</strong>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="text-black">DIGIDZIRE</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <strong>Account Number:</strong>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="text-black">258423454545</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <strong>IFSC:</strong>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="text-black">INDB0000795</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <strong>Account Type:</strong>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="text-black">Current</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <strong>Bank:</strong>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="text-black">Indusind</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="total-amount d-flex justify-content-end gap-5">
+                                        <div class="total-price">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <p>Amount</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="text-black text-nowrap" id="ttl-amt"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <p>CGST</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="text-black text-nowrap" id="ttl-cgst"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <p>SGST</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="text-black text-nowrap" id="ttl-sgst"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row ">
+                                                <div class="col-6">
+                                                    <p>Total</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="text-black text-nowrap" id="grandtotal"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="invoice-footer">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-2">
+                            <p>Invoice No</p>
+                            <p id="inv-no2"></p>
+                        </div>
+                        <div class="col-2 p-0">
+                            <p>Invoice Date</p>
+                            <p id="inv-date2"></p>
+                        </div>
+                        <div class="col-7 p-0">
+                            <p>Billed to</p>
+                            <p id="client-name2"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <!-- <p class="text-right">Total: $130.00</p> -->
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+
+        
+        <!-- Bootstrap JavaScript Libraries -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

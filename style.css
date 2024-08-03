@@ -1,0 +1,133 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@media print{
+    .invoice2{
+        display: none;
+    }
+    .invoice{
+        margin-left: -260px;
+        width: 160%;
+        margin-top: -25px;
+    }
+    .invoice-footer{
+        display: block !important;
+        z-index: 9999;
+    }
+}
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+span{
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+.invoice{
+    background-color: #fff;
+    padding: 20px;
+}
+.invoice h1{
+    font-size: 24px;
+    color: #6539c0;
+    margin-bottom: 20px;
+}
+.invoice p{
+    line-height: 30px;
+    margin: 0;
+    color: grey;
+}
+.invoice-header img{
+    width: 100px;
+    object-fit: contain;
+}
+
+.company-address , .client-details{
+    margin-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    padding: 20px;
+    background-color: #efeaf8;
+    border-radius: 10px;
+}
+.company-address h4, .client-details h4{
+    color: #6539c0;
+    margin-bottom: 10px;
+}
+.company-address a{
+    color: #000;
+    text-decoration: none;
+}
+.table{
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+}
+.table:nth-child(even){
+    --bs-table-bg:red !important;
+}
+
+.table-bordered thead th{
+    background-color: #6539c0;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+.total-amount{
+    margin-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: right;
+}
+tbody:nth-child(even){
+    background-color: #e3dede !important;
+
+}
+
+
+
+.invoice2{
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 3rem 2rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.invoice2 form input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #f0f0f0;
+    border-radius: 5px;
+}
+
+.invoice2 form button{
+    width: 100%;
+    padding: 10px;
+    background-color: #6539c0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.invoice-footer{
+    display: none;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px dashed #000;
+    z-index: -999;
+}
+.invoice-footer p:last-child{
+    font-size: 0.9rem;
+    color: #000;
+    font-weight: 700;
+}
