@@ -23,7 +23,7 @@ function addItem() {
 
         newRow.innerHTML = `
             <td>${item}</td>
-            <td>${rate.toFixed(2)}</td>
+            <td>${rate}%</td>
             <td>${quantity}</td>
             <td>${amount.toFixed(2)}</td>
             <td>${totalAmount.toFixed(2)}</td>
@@ -58,6 +58,8 @@ function addItem() {
 }   
 
 // invoice field start from here
+
+// Use datepicker on the date inputs
 
 document.getElementById('add-invoice').addEventListener('click', addInvoice);
 
