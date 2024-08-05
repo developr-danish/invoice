@@ -33,7 +33,7 @@ function addItem() {
         `;
 
        // Update the grand total
-       grandTotal += amount;
+       grandTotal += totalAmount;
        document.getElementById('ttl-amt').textContent = `₹${grandTotal.toFixed(2)}`;
 
        // Update the CGST total
@@ -101,4 +101,31 @@ function addAddress() {
     document.getElementById('phone').value = '';
     document.getElementById('gst').value = '';
 }
+
+
+// bank account adding part start from here
+
+document.getElementById('add-bank').addEventListener('click', addbank);
+
+function addbank() {
+    const accountname = document.getElementById('act-name').value;
+    const accountnumber = document.getElementById('act-no').value;
+    const bankifsc = document.getElementById('act-ifsc').value;
+    const accounttype = document.getElementById('act-type').value;
+    const bankname = document.getElementById('b-name').value;
+    
+    document.getElementById('account-name').textContent = accountname;
+    document.getElementById('account-no').textContent = accountnumber;
+    document.getElementById('ifsc').textContent = bankifsc;
+    document.getElementById('bank-type').textContent = accounttype;
+    document.getElementById('bank-name').textContent = bankname;
+
+    // Clear input fields
+    document.getElementById('account-name').value = '';
+    document.getElementById('account-no').value = '';
+    document.getElementById('ifsc').value = '';
+    document.getElementById('bank-type').value = '';
+    document.getElementById('bank-name').value = '';
+}
+
 
