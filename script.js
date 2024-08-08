@@ -5,14 +5,16 @@ let grandTotal = 0;
 let cgstTotal = 0;
 let sgstTotal = 0;
 let totalAmount = 0;
+let totalPaid = 0;
 
 function addItem() {
     const item = document.getElementById('item').value;
     const rate = parseFloat(document.getElementById('rate').value);
     const amount = parseFloat(document.getElementById('amount').value);
     const quantity = parseInt(document.getElementById('quantity').value);
+    const paidAmount = parseFloat(document.getElementById('paid-amount').value);
 
-    if (item && !isNaN(rate) && !isNaN(amount) && !isNaN(quantity)) {
+    if (item && !isNaN(rate) && !isNaN(amount) && !isNaN(quantity) && !isNaN(paidAmount)) {
         const totalAmount = amount * quantity;
         const cgst = totalAmount * (rate / 200);
         const sgst = totalAmount * (rate / 200);
@@ -32,30 +34,41 @@ function addItem() {
             <td class="row-total">${total.toFixed(2)}</td>
         `;
 
-       // Update the grand total
-       grandTotal += totalAmount;
-       document.getElementById('ttl-amt').textContent = `₹${grandTotal.toFixed(2)}`;
+        // Update the grand total
+        grandTotal += totalAmount;
+        document.getElementById('ttl-amt').textContent = `₹${grandTotal.toFixed(2)}`;
 
-       // Update the CGST total
-       cgstTotal += cgst;
-       document.getElementById('ttl-cgst').textContent = `₹${cgstTotal.toFixed(2)}`;
+        // Update the CGST total
+        cgstTotal += cgst;
+        document.getElementById('ttl-cgst').textContent = `₹${cgstTotal.toFixed(2)}`;
 
-       // Update the SGST total
-       sgstTotal += sgst;
-       document.getElementById('ttl-sgst').textContent = `₹${sgstTotal.toFixed(2)}`;
+        // Update the SGST total
+        sgstTotal += sgst;
+        document.getElementById('ttl-sgst').textContent = `₹${sgstTotal.toFixed(2)}`;
 
-       // Update the total amount
-       document.getElementById('grandtotal').textContent = `₹${(grandTotal + cgstTotal + sgstTotal).toFixed(2)}`;
+        // Update the total amount
+        const grandTotalWithGST = grandTotal + cgstTotal + sgstTotal;
+        document.getElementById('grandtotal').textContent = `₹${grandTotalWithGST.toFixed(2)}`;
+
+        // Update the total paid amount
+        totalPaid += paidAmount;
+        document.getElementById('total-paid').textContent = `₹${totalPaid.toFixed(2)}`;
+
+        // Update the balance left
+        const balanceLeft = grandTotalWithGST - totalPaid;
+        document.getElementById('balance-left').textContent = `₹${balanceLeft.toFixed(2)}`;
 
         // Clear input fields
         document.getElementById('item').value = '';
         document.getElementById('rate').value = '';
         document.getElementById('amount').value = '';
         document.getElementById('quantity').value = '';
+        document.getElementById('paid-amount').value = '';
     } else {
         alert('Please fill out all fields correctly.');
     }
-}   
+}
+
 
 // invoice field start from here
 
@@ -94,7 +107,7 @@ function addAddress() {
     document.getElementById('client-name').textContent = name;
     document.getElementById('client-name2').textContent = name;
     document.getElementById('client-address').textContent = address;
-    document.getElementById('client-gst').textContent = gst;
+    document.getElementById('client-gst').textContent = `GSTIN: ${gst}`;
     document.getElementById('client-phone').textContent = phone;
 
     // Clear input fields

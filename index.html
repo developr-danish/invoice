@@ -63,6 +63,10 @@
                                     <label for="amount">Quantity:</label>
                                     <input type="number" id="quantity" name="quantity" required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="paid-amount">Total Paid (Optional)</label>
+                                    <input type="number" id="paid-amount" name="paid-amount" required>
+                                </div>
                                 <button type="button" id="add-item">Add Item</button>
                             </form>
                         </div>
@@ -152,14 +156,7 @@
                                         <h4>Billed To</h4>
                                         <strong><p class="text-black" id="client-name"></p></strong>
                                         <p class="text-black" id="client-address"></p>
-                                        <div class="row">
-                                            <div class="col-2">
-                                                <p class="text-black"><strong class="text-black">GSTIN:</strong></p>
-                                            </div>
-                                            <div class="col-6">
-                                                <p class="ps-2 text-black" id="client-gst"></p>
-                                            </div>
-                                        </div>
+                                        <p class="text-black" id="client-gst"></p>
                                         <p class="text-black" id="client-phone"></p>
                                     </div>
                                 </div>
@@ -230,7 +227,7 @@
                                                     <p>Amount</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p class="text-black text-nowrap" id="ttl-amt"></p>
+                                                    <p style="text-align: center;width: 100px !important;" class="text-black text-nowrap" id="ttl-amt"></p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -238,7 +235,7 @@
                                                     <p>CGST</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p class="text-black text-nowrap" id="ttl-cgst"></p>
+                                                    <p style="text-align: center;width: 100px !important;" class="text-black text-nowrap" id="ttl-cgst"></p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -246,18 +243,35 @@
                                                     <p>SGST</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p class="text-black text-nowrap" id="ttl-sgst"></p>
+                                                    <p style="text-align: center;width: 100px !important;" class="text-black text-nowrap" id="ttl-sgst"></p>
                                                 </div>
                                             </div>
                                             <div class="row ">
                                                 <div class="col-6">
-                                                    <p>Total</p>
+                                                    <p style="border-top: 2px dashed black;width: 100px !important; text-align: center;">Total</p>
                                                 </div>
                                                 <div class="col-6">
                                                     <p class="text-black text-nowrap" id="grandtotal"></p>
                                                 </div>
                                             </div>
+                                            <div class="row mt-3">
+                                                <div class="col-6">
+                                                    <h5 style="width: 100px !important; text-align: center;text-wrap: nowrap;">Amount Paid</h5>
+                                                </div>
+                                                <div class="col-6 text-right ">
+                                                    <h5 class="text-nowrap text-black" id="total-paid"></h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <h5 style="width: 100px !important; text-align: center;text-wrap: nowrap;">Balance</h5>
+                                                </div>
+                                                <div class="col-6 text-right ">
+                                                    <h5 class="text-nowrap text-black" id="balance-left"></h5>
+                                                </div>
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>

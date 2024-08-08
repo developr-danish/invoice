@@ -131,3 +131,7 @@ tbody:nth-child(even){
     color: #000;
     font-weight: 700;
 }
+
+#client-gst{
+    text-wrap: nowrap;
+}
