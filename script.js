@@ -4,7 +4,6 @@ document.getElementById('add-item').addEventListener('click', addItem);
 let grandTotal = 0;
 let cgstTotal = 0;
 let sgstTotal = 0;
-let totalAmount = 0;
 let totalPaid = 0;
 
 function addItem() {
@@ -23,6 +22,13 @@ function addItem() {
         const table = document.getElementById('invoice-table').getElementsByTagName('tbody')[0];
         const newRow = table.insertRow();
 
+        // Store the values in the row as data attributes, including paid amount
+        newRow.setAttribute('data-total-amount', totalAmount);
+        newRow.setAttribute('data-cgst', cgst);
+        newRow.setAttribute('data-sgst', sgst);
+        newRow.setAttribute('data-total', total);
+        newRow.setAttribute('data-paid-amount', paidAmount);  // Store the paid amount
+
         newRow.innerHTML = `
             <td>${item}</td>
             <td>${rate}%</td>
@@ -30,8 +36,9 @@ function addItem() {
             <td>${amount.toFixed(2)}</td>
             <td>${totalAmount.toFixed(2)}</td>
             <td>${cgst.toFixed(2)}</td>
-            <td class="row-total">${sgst.toFixed(2)}</td>
-            <td class="row-total">${total.toFixed(2)}</td>
+            <td>${sgst.toFixed(2)}</td>
+            <td>${total.toFixed(2)}</td>
+            <button class="btn-delete"><i class="fa-solid fa-xmark"></i></button>
         `;
 
         // Update the grand total
@@ -46,7 +53,7 @@ function addItem() {
         sgstTotal += sgst;
         document.getElementById('ttl-sgst').textContent = `₹${sgstTotal.toFixed(2)}`;
 
-        // Update the total amount
+        // Update the grand total with GST
         const grandTotalWithGST = grandTotal + cgstTotal + sgstTotal;
         document.getElementById('grandtotal').textContent = `₹${grandTotalWithGST.toFixed(2)}`;
 
@@ -58,6 +65,11 @@ function addItem() {
         const balanceLeft = grandTotalWithGST - totalPaid;
         document.getElementById('balance-left').textContent = `₹${balanceLeft.toFixed(2)}`;
 
+        // Add event listener for the delete button
+        newRow.querySelector('.btn-delete').addEventListener('click', function() {
+            deleteItem(this);
+        });
+
         // Clear input fields
         document.getElementById('item').value = '';
         document.getElementById('rate').value = '';
@@ -68,6 +80,45 @@ function addItem() {
         alert('Please fill out all fields correctly.');
     }
 }
+
+function deleteItem(button) {
+    const row = button.parentElement.parentElement;
+
+    // Retrieve the stored values from the row's data attributes
+    const totalAmount = parseFloat(row.getAttribute('data-total-amount'));
+    const cgst = parseFloat(row.getAttribute('data-cgst'));
+    const sgst = parseFloat(row.getAttribute('data-sgst'));
+    const total = parseFloat(row.getAttribute('data-total'));
+    const paidAmount = parseFloat(row.getAttribute('data-paid-amount'));  // Retrieve the paid amount
+
+    // Update the totals
+    grandTotal -= totalAmount;
+    document.getElementById('ttl-amt').textContent = `₹${grandTotal.toFixed(2)}`;
+
+    cgstTotal -= cgst;
+    document.getElementById('ttl-cgst').textContent = `₹${cgstTotal.toFixed(2)}`;
+
+    sgstTotal -= sgst;
+    document.getElementById('ttl-sgst').textContent = `₹${sgstTotal.toFixed(2)}`;
+
+    const grandTotalWithGST = grandTotal + cgstTotal + sgstTotal;
+    document.getElementById('grandtotal').textContent = `₹${grandTotalWithGST.toFixed(2)}`;
+
+    // Update the total paid amount
+    totalPaid -= paidAmount;
+    document.getElementById('total-paid').textContent = `₹${totalPaid.toFixed(2)}`;
+
+    // Update the balance left
+    const balanceLeft = grandTotalWithGST - totalPaid;
+    document.getElementById('balance-left').textContent = `₹${balanceLeft.toFixed(2)}`;
+
+    // Remove the row from the table
+    row.remove();
+}
+
+
+
+
 
 
 // invoice field start from here
